@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+
+.clear-fix::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  /* 兼容旧浏览器*/
+  visibility: hidden;
+  /* 兼容旧浏览器*/
+}
+
+.clear-fix {
+  *zoom: 1;
+  /* 兼容IE6~7浏览器*/
+}
