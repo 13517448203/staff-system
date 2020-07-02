@@ -1,6 +1,5 @@
 @charset "utf-8";
-
-body{
+body {
   background-color: #222222;
   overflow: hidden;
 }
@@ -43,14 +42,14 @@ body{
 
 .login-form input[type='text'] {
   margin: 30px auto 20px;
-  border:1px solid #8b8b8b;
-  background:url(../img/email.png)no-repeat 7px 17px;
+  border: 1px solid #8b8b8b;
+  background: url(../img/email.png)no-repeat 7px 17px;
 }
 
 .login-form input[type='password'] {
   margin: 0 auto 20px;
-  background:url(../img/lock.png) no-repeat 8px 14px;
-  border:1px solid #8b8b8b;
+  background: url(../img/lock.png) no-repeat 8px 14px;
+  border: 1px solid #8b8b8b;
 }
 
 .login-form input[type='button'] {
@@ -65,33 +64,69 @@ body{
   font-size: 22px;
 }
 
-.login-form input[type='button']:active{
-  
+.login-form input[type='button']:active {
   box-shadow: 0 5px 30px rgba(60, 117, 191, 0.3);
-  
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .login-bottom {
-  width:60%;
+  width: 60%;
   margin: 15px auto;
 }
 
-.login-bottom a{
+.login-bottom a {
   text-decoration: none;
   float: right;
   color: #999;
 }
 
-.login-bottom a:hover{
+.login-bottom a:hover {
   color: blue;
+}
+
+.shake_effect {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
 }
 
 @media only screen and (max-width: 414px) {
   .login {
-    width: 85%;
+    width: 94%;
+    margin: 15% auto;
   }
-  .login-form input[type='button']{
+  .login-form input[type='button'] {
     width: 70%;
   }
 }
