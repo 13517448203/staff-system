@@ -1,7 +1,7 @@
 function check_login() {
   var name = $("#user_name").val();
   var pass = $("#password").val();
-  if (name == "" && pass == "") {
+  if (name == "" || pass == "") {
     $("#login_content").removeClass('shake_effect');
     setTimeout(function () {
       $("#login_content").addClass('shake_effect')
@@ -10,14 +10,14 @@ function check_login() {
   else {
     $.ajax({
       type: "post",
-      url: "",
+      url: "http://localhost:8888/Employee/employee/login.action",
       async: true,
       dataType: "json",
       data: $("#login_form").serialize(),
       success: function (message) {
-        if (message.rspCode == 1) {
+        if (message.returnStatus == 1) {
           window.location.href = "index.html";
-        } else if (message.rspCode == -1) {
+        } else if (message.returnStatus == -1) {
           alert(alert(message.rspMsg));
         }
       }
