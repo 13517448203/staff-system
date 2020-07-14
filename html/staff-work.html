@@ -3,12 +3,106 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="renderer" content="webkit">
+  <title>员工信息</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/font.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <script src="../js/public/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+  <script type="text/javascript" src="../js/public/xadmin.js"></script>
 </head>
 
-<body>
-
+<body class="layui-anim" data-anim="layui-anim-up">
+  <div class="x-nav">
+    <span class="layui-breadcrumb">
+      <a href="">首页</a>
+      <a>
+        <cite>做工</cite>
+      </a>
+    </span>
+    <a class="layui-btn layui-btn-primary layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+      href="javascript:location.replace(location.href);" title="刷新">
+      <i class="layui-icon" style="line-height:38px">ဂ</i></a>
+  </div>
+  <div class="x-body">
+    <div class="layui-row">
+      <form class="layui-form" id="work-form" lay-filter="example">
+        <div class="layui-form-item">
+          <label class="layui-form-label">货物选择</label>
+          <div class="layui-input-block">
+            <select name="cargo" lay-verify="required">
+              <option value="">货物选择</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">工作方式</label>
+          <div class="layui-input-block">
+            <select name="workType" lay-verify="required">
+              <option value="">工作方式</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">请输入数量</label>
+          <div class="layui-input-block">
+            <input type="text" name="quantity" placeholder="请输入数量" lay-verify="required" autocomplete="off"
+              class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit id="test" lay-filter="work-btn"><i class="layui-icon">提交</i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+<script>
+  layui.use(['form', 'layer'], function () {
+    $ = layui.jquery;
+    var form = layui.form
+      , layer = layui.layer;
+
+    //监听提交
+    form.on('submit(work-btn)', function (data) {
+      console.log(data);
+      $.ajax({
+        type: "post",
+        url: "http://localhost:8888/Employee/employee/login.action",
+        async: true,
+        dataType: "json",
+        data: $("#login_form").serialize(),
+        success: function (message) {
+          if (message.returnStatus == 1) {
+            layer.alert("提交成功", { icon: 6, title: '信息' }, function (index) {
+              layer.close(index);
+            });
+            return false;
+          } else if (message.returnStatus == 2) {
+            alert("提交不成功");
+          }else if (message.returnStatus == 7) {
+            alert("未得到员工信息");
+          }
+        }
+      });
+    });
+  });
+</script>
 
 </html>

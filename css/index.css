@@ -556,7 +556,7 @@ table th, table td {
     }
     .x-so input.layui-input{
         width: 100%;
-        margin: 10px;
+        margin: 10px 10px 10px 0;
     }
 }
 
